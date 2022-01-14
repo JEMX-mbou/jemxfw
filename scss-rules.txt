@@ -1,0 +1,14 @@
+SCSS rules
+===========================
+Variables bundled in files per type in "config" folder.
+	For example: colors, sizes.
+
+Utilities and mixins bundled in files per type in "util" folder.
+	For example: shadows, transitions, transforms, positioning
+
+Components are stored in files per component in "components" folder. 
+	(__all__.scss is used to bundle components for imports)
+	For example: nav, footer, card, masthead
+
+Grid system is stored in grid.scss
+
