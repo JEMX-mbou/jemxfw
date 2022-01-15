@@ -1,7 +1,7 @@
 @use '../config/color';
 @use '../config/vendor';
 
-@use '../util/transform';
+@use '../util/mixin/transform';
 
 form,
 label {

@@ -2,9 +2,9 @@
 @use '../config/font';
 @use '../config/size';
 
-@use '../util/transform';
-@use '../util/transition';
-@use '../util/animation';
+@use '../util/mixin/transform';
+@use '../util/mixin/transition';
+@use '../util/mixin/animation';
 
 nav {
   // Standard nav styling.

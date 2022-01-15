@@ -1,6 +1,6 @@
 @use '../config/color';
 
-@use '../util/standard';
+@use '../util/mixin/standard';
 
 .alert {
   @include standard.color(color.get(1));

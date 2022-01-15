@@ -1,7 +1,7 @@
 @use '../config/color';
 
-@use '../util/transition';
-@use '../util/standard';
+@use '../util/mixin/transition';
+@use '../util/mixin/standard';
 
 .card {
   @include transition.normal(('background-color', 'color'));

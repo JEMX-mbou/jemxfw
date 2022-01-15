@@ -1,7 +1,7 @@
 @use '../config/color';
 
-@use '../util/shadow';
-@use '../util/transition';
+@use '../util/mixin/shadow';
+@use '../util/mixin/transition';
 
 button,
 .btn {

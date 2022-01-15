@@ -1,6 +1,6 @@
-@use 'config/size';
+@use '../../config/size';
 
-@use 'util/flex' as f;
+@use '../mixin/flex';
 
 @use 'sass:math';
 
@@ -44,7 +44,7 @@ body * {
 [class^='col-'],
 [class*=' col-'],
 .col {
-  @include f.flex();
+  @include flex.set();
   width: 100%;
 
   &.dp-block { display: block; }

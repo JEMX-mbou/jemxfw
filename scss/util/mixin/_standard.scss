@@ -1,4 +1,4 @@
-@use '../config/color';
+@use '../../config/color';
 
 @mixin set( $bg: false, $border: false, $text: false, $title: false) {
   @if $bg { background-color: $bg }

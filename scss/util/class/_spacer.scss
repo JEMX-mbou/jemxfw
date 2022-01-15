@@ -1,4 +1,4 @@
-@use '../config/size';
+@use '../../config/size';
 
 // Spacer map with the types and sides.
 $spacer: (
@@ -11,7 +11,8 @@ $spacer: (
     'r': 'right',
     'b': 'bottom',
     'y': 'vertical',
-    'x': 'horizontal'
+    'x': 'horizontal',
+    '': false
   )
 );
 
@@ -32,7 +33,10 @@ $spacer: (
 @function classname( $typePref, $sidePref, $num ) { @return #{$typePref}#{$sidePref}+'-'+#{$num}; }
 
 // Function to generate css property based on types and sides.
-@function property( $type, $side ) { @return #{$type}-#{$side}; }
+@function property( $type, $side ) {
+  @if $side { @return #{$type}-#{$side}; }
+  @else { @return #{$type}; }
+}
 
 // Function to generate the space value based on a number and the spacer size in config/_size.scss
 @function spaceval( $num ) { @return calc(round(($num * size.space('size')) * 10) / 10); }
@@ -52,7 +56,9 @@ $spacer: (
         } @else if $sidePref == 'x' { // Horizontal spacer
           #{property($type, 'right')}: #{spaceval($num)};
           #{property($type, 'left')}: #{spaceval($num)};
-        } @else { // Single side spacer
+        } @else if $side { // Single side spacer
+          #{property($type, $side)}: #{spaceval($num)};
+        } @else {
           #{property($type, $side)}: #{spaceval($num)};
         }
       }

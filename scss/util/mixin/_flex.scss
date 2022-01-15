@@ -37,7 +37,7 @@
   &.ai-stretch { align-items: stretch; }
 }
 
-@mixin flex( $wrap: true, $fd: true, $jc: true, $ac: true, $ai: true ) {
+@mixin set( $wrap: true, $fd: true, $jc: true, $ac: true, $ai: true ) {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
