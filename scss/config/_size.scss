@@ -1,31 +1,37 @@
-@use 'sass:map';
-
-// Font map. Used for font-sizes.
-$fonts: (
-  'base': 22px,
-  'deviation': 6
+$sizes: (
+  'screen': (
+    's': 576px,
+    'm': 768px,
+    'l': 992px,
+    'xl': 1200px,
+    'xxl': 1400px
+  ),
+  'column': (
+    'number': 12
+  ),
+  'font': (
+    'base': 22px,
+    'deviation': 6
+  ),
+  'spacer': (
+    'size': 0.5rem,
+    'amount': 5
+  )
 );
 
-// Simple function used to get font-sizes based on the name.
-@function font( $name: false ) {
-  @if $name { @return map.get($fonts, $name); }
-  @else { @return $fonts; }
+@function get( $type, $name: false ) {
+  $typeMap: map-get($sizes, $type);
+  @if $name { @return map-get($typeMap, $name); }
+  @else { @return $typeMap };
 }
 
-// Sizes map. Used for breakpoints and classnames.
-$screens: (
-  's': 576px,
-  'm': 768px,
-  'l': 992px,
-  'xl': 1200px,
-  'xxl': 1400px
-);
+@function font( $name: false ) { @return get('font', $name); }
 
-// Simple function used to get sizes based on the name.
-@function screen( $name: false ) {
-  @if $name { @return map.get($screens, $name); }
-  @else { @return $screens; }
+@function screen( $name: false ) { @return get('screen', $name); }
+
+@function colnum() { @return get('column', 'number'); }
+
+@function spacer( $val ) {
+  @if is-int($val) { @return round(($num * $spacer) * 10) / 10; }
+  @else if is-string($val) { @return get('spacer', $val); }
 }
-
-// Number of columns used.
-$colnum: 12;

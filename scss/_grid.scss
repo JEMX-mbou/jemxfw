@@ -59,10 +59,10 @@ body * {
 }
 
 // For-loop to generate the 12 column grid.
-@for $i from size.$colnum through 1 {
+@for $i from size.colnum() through 1 {
   // Width will be calculated as follows: 100% / (12 / i) where i is the iterator in the for-loop.
   // Calc function is used, because it's more accurate.
-  $div: math.div(size.$colnum, $i);
+  $div: math.div(size.colnum(), $i);
   $width: calc(100% / $div);
 
   // Base column class is generated.
