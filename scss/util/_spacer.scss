@@ -1,0 +1,61 @@
+@use '../config/size';
+
+// Spacer map with the types and sides.
+$spacer: (
+  'type': (
+    'p': 'padding',
+    'm': 'margin'
+  ),
+  'side': (
+    't': 'top',
+    'r': 'right',
+    'b': 'bottom',
+    'y': 'vertical',
+    'x': 'horizontal'
+  )
+);
+
+// Function for returning spacer maps and their values.
+@function get( $name, $pref: false ) {
+  $spaceMap: map-get($spacer, $name);
+  @if $pref { @return map-get($spaceMap, $pref); }
+  @else { @return $spaceMap };
+}
+
+// Extented function of get function for returning types.
+@function type( $pref: false ) { @return get('type', $pref); }
+
+// Extented function of get function for returning side.
+@function side( $pref: false ) { @return get('side', $pref); }
+
+// Function to generate spacer classname based on types, sides and numbers.
+@function classname( $typePref, $sidePref, $num ) { @return #{$typePref}#{$sidePref}+'-'+#{$num}; }
+
+// Function to generate css property based on types and sides.
+@function property( $type, $side ) { @return #{$type}-#{$side}; }
+
+// Function to generate the space value based on a number and the spacer size in config/_size.scss
+@function spaceval( $num ) { @return calc(round(($num * size.space('size')) * 10) / 10); }
+
+// For loop to generate spacerclasses runs X amount of times based on spacer amount in config/_size.scss
+@for $num from 0 through size.space('amount') {
+
+  // Two foreach loops based on the types and sides.
+  @each $typePref, $type in type() {
+    @each $sidePref, $side in side() {
+
+      // Generates the spacer classes with the properties and values.
+      .#{classname($typePref, $sidePref, $num)} {
+        @if $sidePref == 'y' { // Vertical spacer
+          #{property($type, 'top')}: #{spaceval($num)};
+          #{property($type, 'bottom')}: #{spaceval($num)};
+        } @else if $sidePref == 'x' { // Horizontal spacer
+          #{property($type, 'right')}: #{spaceval($num)};
+          #{property($type, 'left')}: #{spaceval($num)};
+        } @else { // Single side spacer
+          #{property($type, $side)}: #{spaceval($num)};
+        }
+      }
+    }
+  }
+}
