@@ -1,0 +1,30 @@
+@use '../config/color';
+
+table {
+  width: 100%;
+  margin: 2rem 0;
+  border-collapse: collapse;
+  border-radius: .5rem;
+  overflow: hidden;
+
+  &.w-auto { width: auto }
+
+  tr {
+    td,th {
+      padding: .2rem .5rem;
+
+      &:not(:first-of-type):not(:last-of-type) {
+        border: solid color.theme('dark', 'border');
+        border-width: 0 1px;
+      }
+    }
+
+    th {
+      background-color: color.theme('dark', 'bg');
+      color: color.theme('dark', 'text');
+    }
+
+    &:nth-of-type(odd) td { background-color: color.theme('light', 'bg') }
+    &:nth-of-type(even) td { background-color: darken(color.theme('light', 'bg'), 10%) }
+  }
+}

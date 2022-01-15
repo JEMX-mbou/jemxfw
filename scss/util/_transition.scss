@@ -1,0 +1,22 @@
+@mixin set( $prop, $dur: 0.5s, $ease: ease, $delay: 0s) {
+
+  $transition: '';
+
+  @if type-of($prop) == 'string' {
+    $transition: $prop $dur $ease $delay;
+  } @else if type-of($prop) == 'list' {
+    $transitionEnd: $dur $ease $delay;
+    @each $val in $prop {
+      $transition: $prop + $transitionEnd + ', ' + transition;
+    }
+  }
+  -webkit-transition: $transition;
+  -moz-transition: $transition;
+  -ms-transition: $transition;
+  -o-transition: $transition;
+  transition: $transition;
+}
+
+@mixin short( $prop ) { @include set( $prop, $dur: .25s ); }
+@mixin normal( $prop ) { @include set( $prop ); }
+@mixin long( $prop ) { @include set( $prop, $dur: 1s ); }

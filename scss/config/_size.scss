@@ -1,0 +1,31 @@
+@use 'sass:map';
+
+// Font map. Used for font-sizes.
+$fonts: (
+  'base': 22px,
+  'deviation': 6
+);
+
+// Simple function used to get font-sizes based on the name.
+@function font( $name: false ) {
+  @if $name { @return map.get($fonts, $name); }
+  @else { @return $fonts; }
+}
+
+// Sizes map. Used for breakpoints and classnames.
+$screens: (
+  's': 576px,
+  'm': 768px,
+  'l': 992px,
+  'xl': 1200px,
+  'xxl': 1400px
+);
+
+// Simple function used to get sizes based on the name.
+@function screen( $name: false ) {
+  @if $name { @return map.get($screens, $name); }
+  @else { @return $screens; }
+}
+
+// Number of columns used.
+$colnum: 12;

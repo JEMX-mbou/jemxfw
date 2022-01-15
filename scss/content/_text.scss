@@ -1,0 +1,98 @@
+@use '../config/size';
+@use '../config/font';
+@use '../config/color';
+
+@use '../util/transition';
+
+html {
+  font-size: size.font('base');
+  scroll-behavior: smooth;
+
+  // Get Max Size (ms) from sizes map;
+  $maxsize: nth(map-values(size.screen()), length(size.screen()));
+
+  @each $size, $screenwidth in size.screen() {
+
+    $htmlfs: round(size.font('base') - (size.font('deviation') - calc($screenwidth / $maxsize) * size.font('deviation')));
+
+    @media screen and (min-width: $screenwidth) {
+      font-size: $htmlfs;
+    }
+  }
+
+  body {
+    font-family: font.family('normal');
+    color: color.theme('light', 'text');
+
+    &.dark { color: color.theme('dark', 'text') }
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  width: 100%;
+  font-family: font.family('title');
+  line-height: 91%;
+}
+
+h1 { font-size: 3rem; color: color.get(1) }
+h2 { font-size: 2.5rem; color: color.get(5) }
+h3 { font-size: 1.9rem; color: color.get(4) }
+h4 { font-size: 1.4rem; color: color.get(3) }
+h5 { font-size: 1rem; color: color.get(1) }
+h6 { font-size: 1rem; color: color.get(2) }
+
+hr {
+  width: 100%;
+  margin: 1rem 0;
+  border-style: solid;
+  border-color: color.theme('light','border');
+
+  &.dark { border-color: color.theme('dark','border') }
+  &.thin { border-top-width: 1px }
+  &.light { border-top-width: 2px }
+  &.thick { border-top-width: 3px }
+}
+
+p {
+  width: 100%;
+  margin: 0 0 1rem 0;
+  line-height: 1.7rem;
+}
+
+a {
+  @include transition.short(color);
+  color: color.get(1);
+
+  &:hover { color: invert(color.get(1)) }
+}
+
+ul, ol {
+  padding-left: 1.5rem;
+  margin: 2rem 0;
+  list-style-position: outside;
+
+  li {
+    padding-left: .5rem;
+    margin: .5rem 0;
+
+    &::marker { margin-left: 1rem }
+  }
+}
+
+blockquote {
+  position: relative;
+  font-family: font.family('title');
+  font-size: 3rem;
+  line-height: 3rem;
+  text-align: center;
+
+  &:before,
+  &:after {
+    content: '"';
+    position: absolute;
+    color: color.get(4);
+  }
+
+  &:before { left: -1rem }
+  &:after { right: -1rem }
+}

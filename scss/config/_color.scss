@@ -1,0 +1,31 @@
+@use 'sass:map';
+@use 'sass:math';
+
+$colors: (
+  1: #012E40,
+  2: #05F2F2,
+  3: #F29F05,
+  4: #F27405,
+  5: #A62103,
+  'success': #1FCC56,
+  'warning': #FFD147,
+  'error': #EB693B
+);
+
+@function get($name: false) {
+  @if ($name) { @return map.get($colors, $name); }
+  @else { @return $colors; }
+}
+
+$themeColors: (
+  'light': ('bg': #ededed, 'text': #333, 'border': #333),
+  'dark': ('bg': #333, 'text': #ededed, 'border': #ededed)
+);
+
+@function theme($name, $key) {
+  @return map.get(map.get($themeColors, $name), $key);
+}
+
+@function white($alpha) { @return rgba(255, 255, 255, math.div($alpha, 10)); }
+@function black($alpha) { @return rgba(0, 0, 0, math.div($alpha, 10)); }
+@function grey($percent) { @return darken(#fff, $percent); }

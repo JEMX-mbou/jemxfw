@@ -1,0 +1,30 @@
+{
+  "name": "jemx-framework",
+  "version": "1.0.0",
+  "description": "A simple frontend framework build with SCSS. ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile": "sass -w scss:dist/css",
+    "minify": "sass -w scss/jemxfw.all.scss:dist/css/jemxfw.all.min.scss --style=compressed"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JEMX-mbou/jemxfw.git"
+  },
+  "keywords": [
+    "frontend",
+    "framework",
+    "scss",
+    "css"
+  ],
+  "author": "Jesse Malotaux <jemx@mboutrecht.nl>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JEMX-mbou/jemxfw/issues"
+  },
+  "homepage": "https://github.com/JEMX-mbou/jemxfw#readme",
+  "devDependencies": {
+    "sass": "^1.48.0"
+  }
+}
