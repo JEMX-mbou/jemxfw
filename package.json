@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "compile": "sass -w scss:dist/css",
-    "minify": "sass -w scss/jemxfw.all.scss:dist/css/jemxfw.all.min.scss --style=compressed"
+    "minify": "sass -w scss/jemxfw.all.scss:dist/css/jemxfw.all.min.css --style=compressed"
   },
   "repository": {
     "type": "git",
