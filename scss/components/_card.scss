@@ -31,7 +31,7 @@
   &.icon {
     i {
       @include transition.normal('color');
-      color: color.theme('light', 'text');
+      color: color.theme('light', 'txt');
       font-size: 8rem;
     }
   }
@@ -49,7 +49,7 @@
       background-color: color.theme('dark', 'bg');
 
       h2, h3, h4, h5, h6, p {
-        color: color.theme('dark', 'text');
+        color: color.theme('dark', 'txt');
       }
     }
   }

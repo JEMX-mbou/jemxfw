@@ -8,16 +8,18 @@
   $prop: 'border';
 
   // Default size.
-  @if not $width { $width: size.get('border', 'thin'); }
+  @if not $width { $width: #{size.border('width', 'thin')}px }
   // If integer is used.
-  @else if is-int($width) { $width: $width+'px'; }
+  @else if is-int($width) { $width: #{$width}px }
   // If border width name is used.
-  @else { $width: size.get('border', $width); }
+  @else { $width: size.get('border', $width) }
 
   // Top and bottom border.
-  @if $side == 'y' { $width: $width 0 $width 0; }
+  @if not $side {
+
+  } @else if $side == 'y' { $width: $width 0 $width 0 }
   // Right and left border.
-  @else if $side == 'x' { $width: 0 $width 0 $width; }
+  @else if $side == 'x' { $width: 0 $width 0 $width }
   // If side is filled.
   @else if $side and str-length($side) > 0 {
 
@@ -31,13 +33,20 @@
   // Default style.
   @if not $style { $style: 'solid'; }
 
+  @if not $color { $color: color.theme('light', 'border'); }
+
   // Border properties are set.
-  @if $side {
-    #{$prop}-width: #{$width};
-    #{$prop}-style: #{$style};
-  }
+  @if $width { #{$prop}-width: #{$width}; }
+  @if $style { #{$prop}-style: #{$style}; }
   @if $color { #{$prop}-color: #{$color}; }
 
   // Border radius property is set.
-  @if $radius { border-radius: $radius; }
+  @if $radius {
+    
+    @if type-of($radius) == 'number' {
+      border-radius: $radius;
+    } @else if type-of($radius) == 'string' {
+      border-radius: size.border('radius', $radius);
+    }
+  }
 }

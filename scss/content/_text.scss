@@ -22,32 +22,34 @@ html {
 
   body {
     font-family: font.family('normal');
-    color: color.theme('light', 'text');
+    color: color.theme('light', 'txt');
 
-    &.dark { color: color.theme('dark', 'text') }
+    &.dark { color: color.theme('dark', 'txt') }
   }
 }
 
 h1, h2, h3, h4, h5, h6 {
   width: 100%;
+  padding: .8em 0;
+  margin: 0;
   font-family: font.family('title');
   line-height: 91%;
 }
 
-h1 { font-size: 3rem; color: color.get(1) }
-h2 { font-size: 2.5rem; color: color.get(5) }
-h3 { font-size: 1.9rem; color: color.get(4) }
-h4 { font-size: 1.4rem; color: color.get(3) }
-h5 { font-size: 1rem; color: color.get(1) }
-h6 { font-size: 1rem; color: color.get(2) }
+h1 { font-size: 3rem; }
+h2 { font-size: 2.5rem; }
+h3 { font-size: 1.9rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1rem; }
+h6 { font-size: 1rem; }
 
 hr {
   width: 100%;
   margin: 1rem 0;
   border-style: solid;
-  border-color: color.theme('light','border');
+  border-color: color.theme('light','bor');
 
-  &.dark { border-color: color.theme('dark','border') }
+  &.dark { border-color: color.theme('dark','bor') }
   &.thin { border-top-width: 1px }
   &.light { border-top-width: 2px }
   &.thick { border-top-width: 3px }
@@ -61,9 +63,9 @@ p {
 
 a {
   @include transition.short(color);
-  color: color.get(1);
+  color: color.accent(1);
 
-  &:hover { color: invert(color.get(1)) }
+  &:hover { color: invert(color.accent(1)) }
 }
 
 ul, ol {
@@ -90,7 +92,7 @@ blockquote {
   &:after {
     content: '"';
     position: absolute;
-    color: color.get(4);
+    color: color.accent(4);
   }
 
   &:before { left: -1rem }

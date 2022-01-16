@@ -1,0 +1,31 @@
+@use '../util/mixin/border';
+
+div#top {
+  main {
+
+  }
+}
+
+section {
+  div > header,
+  div > article,
+  div > footer {
+    margin: 1rem 0;
+    > * {
+      padding: 0 1rem;
+    }
+  }
+  header {
+
+  }
+  article {
+    @include border.set($radius: 's');
+    header {
+      @include border.set($side: 'b');
+      background-color: #e8e8e8;
+    }
+  }
+  footer {
+
+  }
+}

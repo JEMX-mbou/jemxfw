@@ -1,0 +1,39 @@
+@use '../../config/color';
+
+$types: (
+  'bg': 'background-color',
+  'txt': 'color',
+  'bor': 'border-color'
+);
+
+@each $type, $map in color.get() {
+
+  $pref: '';
+
+  @if $type == 'accent' {
+    $pref: 'a';
+  }
+
+  @if $type == 'message' {
+    $pref: 'm';
+  }
+
+  @if $type == 'theme' {
+    $pref: 't';
+  }
+
+  @each $name, $color in $map {
+
+    @each $propPref, $prop in $types {
+
+      @if type-of($color) == 'color' { .c#{$pref}-#{$propPref}-#{$name} { #{$prop}: $color; } }
+      @else if type-of($color) == 'map' {
+
+        @each $propPref, $color in $color {
+          .c#{$pref}-#{$propPref}-#{$name} { #{$prop}: $color; }
+        }
+        
+      }
+    }
+  }
+}

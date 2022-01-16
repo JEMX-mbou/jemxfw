@@ -21,8 +21,8 @@
 
 @mixin theme($name, $bg: true, $border: true, $text: true, $title: true) {
   @if $bg { $bg: color.theme($name, 'bg') }
-  @if $border { $border: color.theme($name, 'border') }
-  @if $text { $text: color.theme($name, 'text') }
+  @if $border { $border: color.theme($name, 'bor') }
+  @if $text { $text: color.theme($name, 'txt') }
 
   @if $title {
     @if $name == 'light'{ $title: lighten($text, 20%) }

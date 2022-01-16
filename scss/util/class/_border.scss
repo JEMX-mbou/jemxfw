@@ -22,16 +22,16 @@
 
     // Setting border-color, light variant.
     .#{$nameClass}-l, .#{$intClass}-light {
-      @include border.set($color: color.theme('light', 'border'));
+      @include border.set($color: color.theme('light', 'bor'));
     }
 
     // Setting border-color, dark variant.
     .#{$nameClass}-d, .#{$intClass}-dark {
-      @include border.set($color: color.theme('dark', 'border'));
+      @include border.set($color: color.theme('dark', 'bor'));
     }
 
     // Setting border-color, all the color variants. (config/color)
-    @each $name, $color in color.get() {
+    @each $name, $color in color.accent() {
 
       .#{$nameClass}-#{$name}, .#{$intClass}-#{$name} {
         @include border.set($color: $color);

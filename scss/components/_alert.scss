@@ -3,7 +3,7 @@
 @use '../util/mixin/standard';
 
 .alert {
-  @include standard.color(color.get(1));
+  @include standard.color(color.accent(1));
 
   // standard alert styling
   // Is also the same as the c-1 class with the colors
@@ -14,11 +14,11 @@
 
   h1, h2, h3, h4, h5, h6 { margin: 0; }
 
-  // Foreach with all the colors map. (color.get());
+  // Foreach with all the colors map. (color.accent());
   // Generates different classes for the alerts.
-  @each $name, $color in color.get() {
+  @each $name, $color in color.accent() {
 
-    &.c-#{$name} { @include standard.color(color.get($name)); }
+    &.c-#{$name} { @include standard.color(color.accent($name)); }
 
   }
 

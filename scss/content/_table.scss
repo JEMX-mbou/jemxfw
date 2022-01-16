@@ -14,14 +14,14 @@ table {
       padding: .2rem .5rem;
 
       &:not(:first-of-type):not(:last-of-type) {
-        border: solid color.theme('dark', 'border');
+        border: solid color.theme('dark', 'bor');
         border-width: 0 1px;
       }
     }
 
     th {
       background-color: color.theme('dark', 'bg');
-      color: color.theme('dark', 'text');
+      color: color.theme('dark', 'txt');
     }
 
     &:nth-of-type(odd) td { background-color: color.theme('light', 'bg') }
