@@ -1,18 +1,11 @@
 @use '../../config/size';
+@use '../../config/side';
 
 // Spacer map with the types and sides.
 $spacer: (
   'type': (
     'p': 'padding',
     'm': 'margin'
-  ),
-  'side': (
-    't': 'top',
-    'r': 'right',
-    'b': 'bottom',
-    'y': 'vertical',
-    'x': 'horizontal',
-    '': false
   )
 );
 
@@ -46,7 +39,7 @@ $spacer: (
 
   // Two foreach loops based on the types and sides.
   @each $typePref, $type in type() {
-    @each $sidePref, $side in side() {
+    @each $sidePref, $side in side.get() {
 
       // Generates the spacer classes with the properties and values.
       .#{classname($typePref, $sidePref, $num)} {
