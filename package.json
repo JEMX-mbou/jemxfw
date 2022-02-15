@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "compile": "sass -w scss:dist/css",
+    "compile": "sass -w scss/jemxfw.all.scss:dist/css/jemxfw.all.css",
     "minify": "sass -w scss/jemxfw.all.scss:dist/css/jemxfw.all.min.css --style=compressed"
   },
   "repository": {
