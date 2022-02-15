@@ -8,6 +8,11 @@
   }
 }
 
+@mixin reset() {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
 @mixin text( $hor: 0, $ver: 0, $blur: 0, $color: rgba( 0, 0, 0, 0.1 ) ) {
   text-shadow: $hor $ver $blur $color;
 }

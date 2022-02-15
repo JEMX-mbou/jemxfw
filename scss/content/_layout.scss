@@ -1,3 +1,5 @@
+@use '../config/color';
+
 @use '../util/mixin/border';
 
 div#top {
@@ -22,8 +24,22 @@ section {
     @include border.set($radius: 's');
     header {
       @include border.set($side: 'b');
-      background-color: #e8e8e8;
+      background-color: color.black(1);
     }
+    > div, address, footer {
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+    }
+    table {
+      margin-right: 1rem;
+      margin-left: 1rem;
+    }
+    footer {
+      @include border.set($side: 't');
+      background-color: color.black(.25);
+      > *:last-child { margin-bottom: 0 }
+    }
+
   }
   footer {
 

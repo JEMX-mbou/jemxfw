@@ -6,6 +6,6 @@ $vendors: (
 
 @mixin prefix($prop, $val) {
   @each $prefix in $vendors {
-    #{$prefix}-#{$prop}: $val;
+    #{$prefix}#{$prop}: $val;
   }
 }
