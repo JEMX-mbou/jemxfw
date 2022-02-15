@@ -5,7 +5,7 @@
 
 button,
 .btn {
-  @include shadow.box( $ver: .2rem, $blur: .2rem, $color: black(3));
+  @include shadow.box( $ver: .2rem, $blur: .2rem, $color: color.black(3));
   @include transition.set(('box-shadow', 'background-color', 'border-color'));
   display: inline-block;
   padding: .5rem 1rem;
