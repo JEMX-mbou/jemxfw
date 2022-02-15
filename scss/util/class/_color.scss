@@ -6,34 +6,24 @@ $types: (
   'bor': 'border-color'
 );
 
-@each $type, $map in color.get() {
+// Get all colors;
+@each $ctype, $cmap in color.get() {
 
   $pref: '';
 
-  @if $type == 'accent' {
-    $pref: 'a';
-  }
+  @if $ctype == 'accent' { $pref: 'a'; }
+  @if $ctype == 'message' { $pref: 'm'; }
+  @if $ctype == 'theme' { $pref: 't'; }
 
-  @if $type == 'message' {
-    $pref: 'm';
-  }
-
-  @if $type == 'theme' {
-    $pref: 't';
-  }
-
-  @each $name, $color in $map {
-
-    @each $propPref, $prop in $types {
-
-      @if type-of($color) == 'color' { .c#{$pref}-#{$propPref}-#{$name} { #{$prop}: $color; } }
-      @else if type-of($color) == 'map' {
-
-        @each $propPref, $color in $color {
-          .c#{$pref}-#{$propPref}-#{$name} { #{$prop}: $color; }
-        }
-        
+  @each $mname, $mcolor in $cmap {
+    @if type-of($mcolor) == 'color' {
+      @each $propPref, $tprop in $types {
+        .c#{$pref}-#{$propPref}-#{$mname} { #{$tprop}: $mcolor; }
       }
+    } @else if type-of($mcolor) == 'map' {
+      .c#{$pref}-bg-#{$mname} { background-color: map-get($mcolor, 'bg'); }
+      .c#{$pref}-txt-#{$mname} { color: map-get($mcolor, 'txt'); }
+      .c#{$pref}-bor-#{$mname} { border-color: map-get($mcolor, 'bor'); }
     }
   }
 }

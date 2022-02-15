@@ -3,13 +3,9 @@
 @use '../../config/spacer';
 
 @use '../function/css';
-// .#{css.classname((mx, 0))} {
-//   background-color: red;
-// }
-
 
 // For loop to generate spacerclasses runs X amount of times based on spacer amount in config/_size.scss
-@for $num from 0 through 2 {//size.space('amount') {
+@for $num from 0 through size.space('amount') {
 
   // Foreach loops based on spacer types (config/spacer)
   @each $typePref, $type in spacer.type() {
@@ -26,15 +22,15 @@
       // Generates the spacer classes with the properties and values.
       .#{$classname} {
         @if $sidePref == 'y' { // Vertical spacer
-          #{css.property(($type, 'top'))}: #{$spaceVal};
-          #{css.property(($type, 'bottom'))}: #{$spaceVal};
+          #{css.property(($type, 'top'))}: #{$spaceVal}!important;
+          #{css.property(($type, 'bottom'))}: #{$spaceVal}!important;
         } @else if $sidePref == 'x' { // Horizontal spacer
-          #{css.property(($type, 'right'))}: #{$spaceVal};
-          #{css.property(($type, 'left'))}: #{$spaceVal};
+          #{css.property(($type, 'right'))}: #{$spaceVal}!important;
+          #{css.property(($type, 'left'))}: #{$spaceVal}!important;
         } @else if $side { // Single side spacer
-          #{css.property(($type, $side))}: #{$spaceVal};
+          #{css.property(($type, $side))}: #{$spaceVal}!important;
         } @else {
-          #{css.property(($type, $side))}: #{$spaceVal};
+          #{css.property(($type, $side))}: #{$spaceVal}!important;
         }
       }
     }
