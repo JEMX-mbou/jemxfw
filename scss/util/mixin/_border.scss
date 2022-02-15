@@ -2,6 +2,8 @@
 @use '../../config/side';
 @use '../../config/color';
 
+@use '../function/list';
+
 @mixin set($width: false, $side: false, $style: false, $color: false, $radius: false) {
 
   // Default property.
@@ -9,15 +11,15 @@
 
   // Default size.
   @if not $width { $width: #{size.border('width', 'thin')}px }
+  // If multiple custom widths are entered.
+  @else if is-list($width) { $width: list.implode($width, ' ') }
   // If integer is used.
   @else if is-int($width) { $width: #{$width}px }
   // If border width name is used.
   @else { $width: size.get('border', $width) }
 
   // Top and bottom border.
-  @if not $side {
-
-  } @else if $side == 'y' { $width: $width 0 $width 0 }
+  @if $side == 'y' { $width: $width 0 $width 0 }
   // Right and left border.
   @else if $side == 'x' { $width: 0 $width 0 $width }
   // If side is filled.
@@ -42,7 +44,7 @@
 
   // Border radius property is set.
   @if $radius {
-    
+
     @if type-of($radius) == 'number' {
       border-radius: $radius;
     } @else if type-of($radius) == 'string' {

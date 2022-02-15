@@ -7,6 +7,10 @@
   @include vendor.prefix( transform, $val);
 }
 
+@mixin custom( $val ) {
+  @include vendor.prefix( transform, $val);
+}
+
 @mixin rotate( $deg, $axis: false ) {
   $rotate: '';
 
