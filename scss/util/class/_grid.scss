@@ -53,7 +53,7 @@ body * {
 [class^='col-'],
 [class*=' col-'],
 .col {
-  width: min-content;
+  width: 100%;
   padding: .5rem;
 }
 
